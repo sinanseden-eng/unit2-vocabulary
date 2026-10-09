@@ -44,7 +44,7 @@
 
 ## Step 4: Prepare to Barter (5 minutes)
 
-- T opens Barter Hustle and gives each student one photo card. T says: "Read what you have, what you want and why. Check your item's condition. Keep your own card."
+- T switches to the unit introduction page, opens 4. Barter Hustle and gives each student one photo card. T says: "Read what you have, what you want and why. Check your item's condition. Keep your own card."
 - T models an exchange with one student: "Would you like to swap your pen for my notebook?" The student asks: "Is it in good condition?" T replies: "Yes. Can we negotiate a deal?" The student replies: "It's a deal!"
 - Ss practise one offer and one reply with a neighbour. T points to the phrases on the cards and the website.
 - T gives the rules: "Use two phrases and two key words. Both people must agree. You can refuse politely. Be honest about your item. Do not change your card. No real items or money are needed."
