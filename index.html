@@ -1,264 +1,64 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unit 2 Vocabulary Showcase</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .vocab-card {
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-        }
-        .vocab-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-        }
-        .gemini-output {
-            transition: max-height 0.5s ease-in-out;
-            max-height: 0;
-            overflow: hidden;
-        }
-        .loader {
-            width: 20px;
-            height: 20px;
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #3498db;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="B1+ Unit 2 vocabulary from barter to transaction, with photo cards, personal associations, useful chunks and a classroom barter game.">
+<title>Unit 2 Vocabulary Studio</title>
+<style>
+:root{--ink:#142e35;--muted:#526b71;--green:#007d72;--lime:#d9f399;--amber:#ffcf70;--line:#d8e4e1;--card:#fff;--shadow:0 16px 44px #184a4210}*{box-sizing:border-box}body{margin:0;font:17px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:radial-gradient(circle at 0 0,#e2f3ed,transparent 40%),#f5f8f6}button,input,textarea,select{font:inherit}button,a{touch-action:manipulation}button{cursor:pointer}button:disabled{cursor:default;opacity:.55}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #be7000;outline-offset:3px}[hidden]{display:none!important}a{color:var(--green)}.app{max-width:1400px;margin:auto;padding:20px}.top{display:flex;gap:16px;align-items:center;justify-content:space-between;background:#ffffffef;border:1px solid var(--line);padding:14px 20px;border-radius:20px;position:sticky;top:10px;z-index:20;box-shadow:var(--shadow)}.brand{font-size:20px;font-weight:850;line-height:1.15}.brand small{display:block;font-size:12px;font-weight:600;color:var(--muted);margin-top:5px}.actions,.controls,.chips,.links{display:flex;gap:8px;flex-wrap:wrap}.btn{border:1px solid var(--line);border-radius:12px;padding:10px 16px;background:white;color:var(--ink);font-weight:750;text-decoration:none;display:inline-block}.btn.primary{background:var(--green);border-color:var(--green);color:white}.btn.soft{background:#eaf4ef}.btn.gold{background:var(--amber);border-color:var(--amber)}.hero{margin:24px 0 20px;background:#123d38;color:white;border-radius:28px;padding:28px 34px;position:relative;overflow:hidden}.hero:after{content:'↔';position:absolute;right:35px;top:-30px;font-size:200px;color:#b7dec414;pointer-events:none}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.16em;font-weight:800;color:var(--lime)}h1{font-size:clamp(32px,4vw,49px);line-height:1.12;margin:10px 0 12px}.hero p{color:#deeee8;max-width:820px;margin:0}.route{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}.route span{background:#ffffff12;border:1px solid #ffffff20;border-radius:12px;padding:7px 12px;font-size:14px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.tabs button.active{background:var(--ink);color:white;border-color:var(--ink)}.intro{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:20px 0 15px}.intro h2{font-size:24px;margin:0}.intro p{margin:3px 0;color:var(--muted);font-size:15px}.controls label{font-size:14px;color:var(--muted);display:flex;align-items:center;gap:6px}.controls select,.controls input{padding:9px;border:1px solid var(--line);border-radius:10px;background:white;max-width:220px}.deck{background:white;border:1px solid var(--line);border-radius:25px;box-shadow:var(--shadow);overflow:hidden;display:grid;grid-template-columns:minmax(300px,.95fr) minmax(400px,1.15fr)}.visual{background:#e7ece7;position:relative;display:flex;align-items:center}.scene{width:100%;aspect-ratio:1;background-image:url('assets/vocabulary-photos.jpg');background-size:500% 200%;background-repeat:no-repeat}.scene img{display:block;width:100%;aspect-ratio:1;object-fit:cover}.photo-count{position:absolute;left:18px;top:18px;border-radius:100px;padding:7px 13px;font-size:13px;font-weight:800;color:white;background:#12362be0}.photo-credit{position:absolute;bottom:12px;left:15px;font-size:10px;color:#183b35;background:#ffffffe8;padding:4px 8px;border-radius:6px}.cardbody{padding:26px 30px}.wordrow{display:flex;gap:12px;justify-content:space-between;align-items:center}.wordrow h3{font-size:clamp(31px,3.8vw,47px);line-height:1.1;margin:6px 0 12px}.pos{color:var(--green);font-weight:750;font-size:13px}.definition{font-size:20px;line-height:1.45;margin:5px 0 14px}.chunk{display:inline-block;border-radius:8px;background:#edf5eb;padding:5px 9px;margin:3px 3px 3px 0;font-size:15px;color:#275747}.example{margin:14px 0;background:#f5f8f6;border-radius:13px;padding:13px 16px;font-size:17px}.example b{color:var(--green)}.prompt{font-weight:750;font-size:14px;margin:14px 0 6px}.inputrow{display:flex;gap:7px}.inputrow input{width:100%;min-width:0;padding:10px;border:1px solid var(--line);border-radius:10px}.memory{display:inline-flex;align-items:center;gap:5px;background:#fff0c8;border-radius:100px;padding:5px 11px;font-size:14px}.memory button{border:0;background:none;font-size:18px;line-height:1.2;color:#4c450f}.chips{margin:8px 0}.write textarea{width:100%;border:1px solid var(--line);border-radius:11px;padding:10px;resize:vertical;min-height:64px}.small{font-size:13px;color:var(--muted)}details.toolkit{border-top:1px solid var(--line);margin-top:17px;padding-top:12px}summary{cursor:pointer;font-weight:750}.toolkit .tools{display:grid;gap:12px;margin:14px 0}.tools h4{font-size:14px;margin:0 0 4px;color:var(--green)}.tools p{font-size:15px;margin:0}.deckfoot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:16px 0}.dots{display:flex;gap:6px;flex-wrap:wrap;max-width:650px}.dots button{border:1px solid var(--line);background:white;border-radius:8px;min-width:34px;padding:5px;font-size:12px}.dots button[aria-current=true]{background:var(--green);color:white}.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}.gallery .deck{display:block}.gallery .scene{aspect-ratio:1}.gallery .wordrow h3{font-size:33px}.gallery .cardbody{padding:24px}.empty{padding:30px;text-align:center;background:white;border-radius:20px}.view-note{margin:20px 0;background:#eaf4ee;padding:18px 22px;border-radius:15px}.view-note h2{margin:0 0 6px;font-size:24px}.view-note p{margin:0}.recall-answer{border-top:1px solid var(--line);margin-top:20px;padding-top:16px}.recall-prompt{font-size:27px;line-height:1.4;margin:20px 0}.game-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px}.panel{background:white;border-radius:22px;border:1px solid var(--line);padding:28px;box-shadow:var(--shadow)}.panel h2{margin-top:0;font-size:26px}.panel h3{font-size:20px;color:var(--green);margin-top:24px}.panel li{margin-bottom:10px}.timer{text-align:center;background:#123d38;color:white;display:flex;flex-direction:column;justify-content:center;align-items:center}.timer h2{color:var(--lime)}#timer-display{font-variant-numeric:tabular-nums;font-size:clamp(70px,9vw,118px);font-weight:900;line-height:1.1;margin:24px 0}.timer .btn{border-color:transparent}.timer .small{color:#deeee8}progress{width:100%;accent-color:var(--amber);height:10px}.phrase-list{list-style:none;padding:0}.phrase-list li{padding:10px 14px;background:#f0f6ef;border-radius:10px}.reflection{margin-top:24px}.reflection .game-grid{grid-template-columns:1fr 1fr}.teacher{margin-top:30px;border-top:1px solid var(--line);padding-top:16px}.teacher table{border-collapse:collapse;width:100%;font-size:15px}.teacher td,.teacher th{border:1px solid var(--line);padding:9px;text-align:left}.teacher th{background:#e7f0eb}footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:25px 4px;font-size:13px;color:var(--muted)}#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#142e35;color:white;padding:12px 20px;border-radius:12px;z-index:50;max-width:90vw}.projector .hero,.projector footer,.projector .intro p{display:none}.projector .app{padding-top:10px}.projector .intro{margin:12px 0}.projector .tabs{margin:10px 0}.projector .cardbody{padding:24px}.projector .definition{font-size:23px}.projector .example{font-size:20px}.projector .scene{align-self:center}
+.projector #view-learn .write,.projector #view-learn .memory-prompt,.projector #view-learn .inputrow,.projector #view-learn .chips{display:none}.projector .scene{max-width:min(520px,52vh)}.visual{justify-content:center}
+@media(max-width:850px){.top{position:static;align-items:flex-start;flex-wrap:wrap}.app{padding:12px}.hero{padding:23px}.deck{grid-template-columns:1fr}.visual{max-height:none}.scene{max-width:100%;margin:auto}.cardbody{padding:23px}.gallery{grid-template-columns:1fr}.game-grid,.reflection .game-grid{grid-template-columns:1fr}.intro{align-items:flex-start;flex-direction:column}.controls{width:100%}.deckfoot{flex-wrap:wrap}.wordrow h3{font-size:36px}.timer{padding:35px}.dots{order:3;width:100%}.photo-count{font-size:12px}}
+@media print{body{background:white;color:black;font-size:11pt}.top,.hero,.tabs,.controls,.deckfoot,footer,.teacher,#toast,.actions,.write,.inputrow,.photo-count,.photo-credit,.tick,.speak{display:none!important}.app{padding:0;max-width:none}.gallery{display:block}.deck{display:block;box-shadow:none;break-inside:avoid;margin:10px 0;border:1px solid #ccc}.visual{display:none}.cardbody{padding:15px}.wordrow h3{font-size:20pt}.definition,.example{font-size:11pt}.intro{margin:0}.chunk{background:none;border:1px solid #ddd}.panel{box-shadow:none;padding:15px}section[hidden]{display:none!important}}
+</style>
 </head>
-<body class="bg-gray-100">
-
-    <div class="container mx-auto p-4 sm:p-6 md:p-8">
-        <header class="text-center mb-10">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900">Unit 2 Vocabulary Showcase</h1>
-            <p class="mt-3 text-lg text-gray-600">A visual guide to the key words in "What is the value of MONEY?". Try the interactive features on each card!</p>
-        </header>
-
-        <!-- Money and Trade Section -->
-        <section class="mb-12">
-            <h2 class="text-3xl font-bold border-b-4 border-blue-500 pb-2 mb-6">Money and Trade</h2>
-            <div id="money-trade-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                <!-- Cards will be injected by JavaScript -->
-            </div>
-        </section>
-
-        <!-- Compound Adjectives Section -->
-        <section class="mb-12">
-            <h2 class="text-3xl font-bold border-b-4 border-green-500 pb-2 mb-6">Compound Adjectives</h2>
-            <div id="compound-adjectives-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                <!-- Cards will be injected by JavaScript -->
-            </div>
-        </section>
-
-        <!-- World Problems and Solutions Section -->
-        <section>
-            <h2 class="text-3xl font-bold border-b-4 border-purple-500 pb-2 mb-6">World Problems and Solutions</h2>
-            <div id="world-problems-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                <!-- Cards will be injected by JavaScript -->
-            </div>
-        </section>
-
-    </div>
-
-    <script>
-        const vocabData = {
-            moneyTrade: [
-                { word: 'barter', definition: 'to trade items without using money', imageUrl: 'https://cdn.prod.website-files.com/6580bf6203485cf15c72a4f1/658f6f9f60c313eea30c9517_62ce166c87251635d37b9371_621f0dbcbed9c1457dd4ebd5_1280-186187368-barter.jpeg' },
-                { word: 'bill', definition: 'a piece of paper money', imageUrl: 'https://www.alliantcreditunion.org/images/uploads/images/Dollar-Bill-Dimensions.jpg' },
-                { word: 'checkout counter', definition: 'the place in a store where you pay', imageUrl: 'https://www.shelvingdepot.com/wp-content/uploads/2018/08/Gondola-Checkout-Counter.jpg' },
-                { word: 'consumer', definition: 'a person who buys goods or services', imageUrl: 'https://www.salesforce.com/blog/wp-content/uploads/sites/2/2022/12/GettyImages-1452145403.jpg?w=750' },
-                { word: 'currency', definition: 'the type of money used in a country', imageUrl: 'https://i.ytimg.com/vi/GjvLkkA3wgw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAUKo31Nr0YmTfYxATc4K0vKN1_3A' },
-                { word: 'deal', definition: 'a special price or agreement', imageUrl: 'https://cdn.corporatefinanceinstitute.com/assets/business-deal.jpeg' },
-                { word: 'goods', definition: 'items or products that are for sale', imageUrl: 'https://cdn1.ieltsonlinetests.com/hu-kCKE--621x414%40LiveMint.jpg' },
-                { word: 'negotiate', definition: 'to discuss to reach an agreement', imageUrl: 'https://www.insidehighered.com/sites/default/files/styles/max_650x650/public/media/GettyImages-1209776844.jpg?itok=P1SWIlM5' },
-                { word: 'swap', definition: 'to exchange one thing for another', imageUrl: 'https://bymmb.com/wp-content/uploads/2014/03/swap-nedir.jpg' },
-                { word: 'transaction', definition: 'the action of buying or selling', imageUrl: 'https://www.tgccpa.com/wp-content/uploads/2019/02/AdobeStock_115802339_r-min.jpg' }
-            ],
-            compoundAdjectives: [
-                { word: 'hard-to-resist', definition: 'very tempting or difficult to say no to', imageUrl: 'https://scontent.fsaw3-1.fna.fbcdn.net/v/t39.30808-6/474223303_3864214073826748_3580515620733815347_n.jpg?stp=dst-jpg_s640x640_tt6&_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_ohc=yMx0wsKmlbcQ7kNvwG6RHE_&_nc_oc=AdkMQ37HfDz4IuweQrfud3Nx0UpWj9v8nE3mIzPyr9GN3FLDvlyzZ4JXusdhsYNOG8E&_nc_zt=23&_nc_ht=scontent.fsaw3-1.fna&_nc_gid=-Wzx7Qmhh-6S-IFfpdomNw&oh=00_AfXJr2CoXyebivNPfg6zolj9i4XYQlStn5dhPnsQX_wuXA&oe=689917CF' },
-                { word: 'high-tech', definition: 'using very modern technology', imageUrl: 'https://www.ict.eu/sites/corporate/files/images/Header-expertise-High-Tech-1920x867.jpg' },
-                { word: 'must-have', definition: 'something very popular you feel you need', imageUrl: 'https://theholdernessfamily.com/wp-content/uploads/2022/06/summer-must-haves.png' },
-                { word: 'overnight', definition: 'happening very suddenly or quickly', imageUrl: 'https://quotefancy.com/media/wallpaper/1600x900/1980186-Paula-Deen-Quote-Change-doesn-t-happen-overnight-It-starts-with.jpg' },
-                { word: 'sky-high', definition: 'extremely high (usually for prices)', imageUrl: 'https://i.redd.it/usaj20xfmotc1.png' },
-                { word: 'worldwide', definition: 'happening all over the world', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTluIRueSUbZKOS9eDqd62yB9SrEjr971jBoA&s' }
-            ],
-            worldProblems: [
-                { word: 'benefit', definition: 'a helpful or good effect', imageUrl: 'https://www.flexjobs.com/employer-blog/wp-content/uploads/2020/01/27163418/benefit-trends.png' },
-                { word: 'damage', definition: 'harm or injury caused to something', imageUrl: 'https://www.firstatlanticfire.com/wp-content/uploads/2021/05/page-header-wind-damage.jpg' },
-                { word: 'deserve', definition: 'to have earned something', imageUrl: 'https://cdn.langeek.co/photo/43494/original/?type=jpeg' },
-                { word: 'potential', definition: 'the possibility of future development', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfHkJ8Q-7UIi9d_Y5TOmZSqT1axreRVAbiPg&s' },
-                { word: 'poverty', definition: 'the state of being extremely poor', imageUrl: 'https://images.eu.ctfassets.net/8n7i7n887l2e/6SL0DdTBt5Uw99SOMdLPus/72cd186b0373699427d3f85e1fcfcc14/Poverty-what-is-poverty-1.jpg' },
-                { word: 'priority', definition: 'the thing that is most important', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlQLPCb4m7lgFMceKoI7QfFsjjA0ZflsD8Uw&s' },
-                { word: 'social enterprise', definition: 'a business created to solve social problems', imageUrl: 'https://www.bigissue.com/wp-content/uploads/2017/09/Social_Enterprise.jpg' },
-                { word: 'transform', definition: 'to change something completely', imageUrl: 'https://media.istockphoto.com/id/1417761158/tr/foto%C4%9Fraf/success-transformation.jpg?s=612x612&w=0&k=20&c=QG4T3uFIejrGIPExbcDaPdFcyJbd81EYDOxZEcFpjS8=' },
-                { word: 'vaccination', definition: 'a shot to protect against a disease', imageUrl: 'https://www.phc.ox.ac.uk/images/blog/covid-vaccines-in-children/responsive_image?ratio=r16x9&scale=w760' }
-            ]
-        };
-
-        function createVocabCard(item) {
-            const card = document.createElement('div');
-            card.className = 'vocab-card bg-white rounded-lg shadow-md overflow-hidden flex flex-col';
-            
-            card.innerHTML = `
-                <img src="${item.imageUrl}" alt="${item.word}" class="w-full h-40 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';">
-                <div class="p-4 flex flex-col flex-grow">
-                    <h3 class="text-xl font-bold">${item.word}</h3>
-                    <p class="text-gray-600 mt-1">${item.definition}</p>
-                    <button class="gemini-btn mt-4 w-full bg-purple-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-purple-700 transition-colors duration-200">
-                        ✨ Explain & Example
-                    </button>
-                    <div class="gemini-output bg-purple-50 p-3 mt-3 rounded-lg">
-                        <div class="loader-container" style="display: none;"><div class="loader"></div></div>
-                        <div class="content-container text-sm text-gray-700"></div>
-                    </div>
-                    <div class="mt-4 pt-4 border-t border-gray-200 flex-grow flex flex-col">
-                        <label class="font-semibold text-gray-700 mb-2">Practice with a sentence:</label>
-                        <textarea class="sentence-input w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400" rows="2" placeholder="Write your sentence here..."></textarea>
-                        <button class="check-sentence-btn mt-2 w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-200">
-                            Check My Sentence
-                        </button>
-                        <div class="feedback-output bg-blue-50 p-3 mt-3 rounded-lg" style="display: none;">
-                            <div class="loader-container" style="display: none;"><div class="loader"></div></div>
-                            <div class="content-container text-sm text-gray-700"></div>
-                        </div>
-                    </div>
-                </div>
-            `;
-            return card;
-        }
-
-        function populateGrid(gridId, data) {
-            const grid = document.getElementById(gridId);
-            data.forEach(item => {
-                grid.appendChild(createVocabCard(item));
-            });
-        }
-
-        async function callGeminiWithExponentialBackoff(prompt, maxRetries = 5) {
-            let delay = 1000;
-            for (let i = 0; i < maxRetries; i++) {
-                try {
-                    const apiKey = "";
-                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-                    const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
-
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-
-                    if (!response.ok) {
-                        if (response.status === 429 || response.status >= 500) {
-                            throw new Error(`API call failed with status: ${response.status}`);
-                        } else {
-                            const errorResult = await response.json();
-                            return `Error: ${errorResult.error?.message || 'An unknown error occurred.'}`;
-                        }
-                    }
-
-                    const result = await response.json();
-                    if (result.candidates && result.candidates.length > 0 &&
-                        result.candidates[0].content && result.candidates[0].content.parts &&
-                        result.candidates[0].content.parts.length > 0) {
-                        return result.candidates[0].content.parts[0].text;
-                    } else {
-                        return "Sorry, the model's response was empty.";
-                    }
-                } catch (error) {
-                    if (i === maxRetries - 1) {
-                        console.error("Gemini API call error after max retries:", error);
-                        return "Sorry, an error occurred while trying to get a response. Please try again later.";
-                    }
-                    await new Promise(res => setTimeout(res, delay));
-                    delay *= 2;
-                }
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            populateGrid('money-trade-grid', vocabData.moneyTrade);
-            populateGrid('compound-adjectives-grid', vocabData.compoundAdjectives);
-            populateGrid('world-problems-grid', vocabData.worldProblems);
-
-            document.addEventListener('click', async (e) => {
-                if (e.target.classList.contains('gemini-btn')) {
-                    const button = e.target;
-                    const card = button.closest('.vocab-card');
-                    const word = card.querySelector('h3').textContent;
-                    const definition = card.querySelector('p').textContent;
-                    const outputDiv = card.querySelector('.gemini-output');
-                    const loader = outputDiv.querySelector('.loader-container');
-                    const content = outputDiv.querySelector('.content-container');
-
-                    button.disabled = true;
-                    button.classList.add('opacity-50', 'cursor-not-allowed');
-                    
-                    loader.style.display = 'block';
-                    content.innerHTML = '';
-                    outputDiv.style.maxHeight = '50px';
-
-                    const prompt = `For the vocabulary word "${word}", which means "${definition}", do two things and format it exactly like this:\n\n**New Example:** [Write one new, creative example sentence here.]\n\n**Simple Explanation:** [Explain the word in a very simple way, like you're talking to a 10-year-old, maybe with an analogy.]`;
-
-                    const response = await callGeminiWithExponentialBackoff(prompt);
-                    
-                    content.innerHTML = response.replace(/\n/g, '<br>');
-                    loader.style.display = 'none';
-                    outputDiv.style.maxHeight = outputDiv.scrollHeight + 'px';
-
-                    button.disabled = false;
-                    button.classList.remove('opacity-50', 'cursor-not-allowed');
-                }
-
-                if (e.target.classList.contains('check-sentence-btn')) {
-                    const button = e.target;
-                    const card = button.closest('.vocab-card');
-                    const word = card.querySelector('h3').textContent;
-                    const definition = card.querySelector('p').textContent;
-                    const textarea = card.querySelector('.sentence-input');
-                    const studentSentence = textarea.value;
-                    const outputDiv = card.querySelector('.feedback-output');
-                    const loader = outputDiv.querySelector('.loader-container');
-                    const content = outputDiv.querySelector('.content-container');
-
-                    if (studentSentence.trim() === '') {
-                        content.textContent = 'Please write a sentence first.';
-                        outputDiv.style.display = 'block';
-                        return;
-                    }
-
-                    button.disabled = true;
-                    button.classList.add('opacity-50', 'cursor-not-allowed');
-                    
-                    loader.style.display = 'block';
-                    content.innerHTML = '';
-                    outputDiv.style.display = 'block';
-
-                    const prompt = `You are a friendly and encouraging English teacher. A student is practicing the vocabulary word "${word}", which means "${definition}". The student wrote the following sentence: "${studentSentence}". Please do two things: 1. Tell the student if they used the word correctly or not. 2. If it's correct, praise them and explain why it's a good sentence. If it's incorrect, gently explain the mistake and provide a corrected version of their sentence. Keep your feedback concise and positive.`;
-                    
-                    const response = await callGeminiWithExponentialBackoff(prompt);
-                    
-                    content.innerHTML = response.replace(/\n/g, '<br>');
-                    loader.style.display = 'none';
-
-                    button.disabled = false;
-                    button.classList.remove('opacity-50', 'cursor-not-allowed');
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+<body><div class="app">
+<header class="top"><div class="brand">Unit 2 Vocabulary Studio<small>What is the value of money? · B1+</small></div><div class="actions"><button id="projector" class="btn soft" aria-pressed="false">Projector mode</button><button id="save-top" class="btn primary">Save my notes</button><button id="export" class="btn">Download notes</button></div></header>
+<div class="hero"><span class="eyebrow">Lesson 2 · Money and trade</span><h1>Learn the words.<br>Then make a deal.</h1><p>Look at a photo, connect the word to your own life, notice a useful phrase and put it to work.</p><div class="route"><span><b>First 20 minutes</b> · Vocabulary</span><span><b>Next 20 minutes</b> · Barter Hustle</span><span><b>Today's set</b> · barter → transaction · 10 words</span></div></div>
+<nav class="tabs" aria-label="Learning activities"><button class="btn active" data-view="learn" aria-pressed="true">1. Vocabulary</button><button class="btn" data-view="associate" aria-pressed="false">2. Memory links</button><button class="btn" data-view="recall" aria-pressed="false">3. Quick recall</button><button class="btn" data-view="barter" aria-pressed="false">4. Barter Hustle</button></nav>
+<section id="view-learn"><div class="intro"><div><h2 id="set-title">Money and trade</h2><p>Start with barter and finish with transaction. Meet every word before the game.</p></div><div class="controls"><label>Word set <select id="category"><option value="moneyTrade">Today's 10 words</option><option value="compoundAdjectives">Later · compound adjectives</option><option value="worldProblems">Later · problems and solutions</option><option value="all">All 25 words</option></select></label><button class="btn soft" id="layout">Show card gallery</button></div></div><div id="learn-card"></div><div class="deckfoot" id="learn-controls"><button class="btn" id="prev">← Previous</button><div class="dots" id="dots" aria-label="Choose a word"></div><button class="btn primary" id="next">Next word →</button></div><div id="gallery" class="gallery" hidden></div></section>
+<section id="view-associate" hidden><div class="view-note"><h2>Make two personal memory links</h2><p>Choose two of today's words. Say “___ makes me think of ___ because ___.” Then use one useful chunk in a sentence.</p></div><div id="associate-card"></div><div class="deckfoot"><button class="btn" id="associate-prev">← Previous</button><span class="small" id="associate-count"></span><button class="btn primary" id="associate-next">Next word →</button></div></section>
+<section id="view-recall" hidden><div class="view-note"><h2>Recall before you barter</h2><p>Try the four prompts without opening your notes. Tell a partner your answer and a reason. Then reveal and check.</p></div><div id="recall-card" class="panel"></div><div class="deckfoot"><button class="btn" id="recall-prev">← Previous</button><span class="small" id="recall-count"></span><button class="btn primary" id="recall-next">Next prompt →</button></div></section>
+<section id="view-barter" hidden><div class="view-note"><h2>The Great Barter Hustle</h2><p>20 minutes in total: prepare 5 · trade 6 · reflect 7 · exit check 2. The timer below is for the trading round.</p></div><div class="game-grid"><div class="panel"><h2>Your mission</h2><ol><li>Read your card: what do you <b>have</b>, what do you <b>want</b> and why?</li><li>Keep your card. Ask other students what they have and want.</li><li>Check the item's condition. Use <b>two phrases</b> and <b>two target words</b> to negotiate.</li><li>Both people must agree. You may politely refuse. Be honest; do not change your card's details.</li><li>If you agree, act out the swap, record what you gave and received, then sit down. No real items or money are needed.</li><li>If you cannot agree, try another partner. At the end, tick <b>deal</b> or <b>no deal</b> and write a reason.</li></ol><div class="links"><a class="btn primary" href="resources/Barter_Hustle_24_Cards.pdf" target="_blank" rel="noopener">Print 24 photo cards · 6 pages</a><a class="btn" href="resources/Unit_2_Lesson_2_Vocabulary_and_Bartering.docx" download>Lesson 2 plan</a></div></div><div class="panel timer"><h2>Market closes in</h2><div id="timer-display" role="timer" aria-label="Trading time remaining">6:00</div><progress id="timer-progress" max="360" value="360"></progress><p id="market-status" aria-live="polite">Ready for a six-minute trading round.</p><div class="actions"><button id="timer-start" class="btn gold">Start market</button><button id="timer-reset" class="btn">Reset timer</button></div><p class="small">You can pause while your teacher helps.</p></div></div><div class="reflection game-grid"><div class="panel"><h2>Language for your deal</h2><ul class="phrase-list"><li>“I have __. I'm looking for __.”</li><li>“Would you like to <b>swap</b> your __ for my __?”</li><li>“Can we <b>negotiate</b> a <b>deal</b>?”</li><li>“It has the advantage of being __.”</li><li>“Is it in good condition?”</li><li>“That seems fair. It's a deal!”</li><li>“Sorry, that doesn't meet my needs.”</li></ul></div><div class="panel"><h2>Did bartering work?</h2><ol><li>Did you make a deal? What did you swap?</li><li>If you did not make a deal, what stopped you?</li><li>Did both people get something they needed?</li><li>Would money make this transaction easier? Why?</li></ol><p><b>Successful:</b> “We swapped __ for __ because __.”</p><p><b>Unsuccessful:</b> “We tried to negotiate, but __, so the swap failed.”</p><p><b>Exit:</b> “Bartering worked / failed for me because __. Money makes transactions easier because __.”</p></div></div></section>
+<section class="teacher"><button id="teacher-toggle" class="btn soft" aria-expanded="false" aria-controls="teacher-guide">Teacher guide</button><div id="teacher-guide" hidden><h2>Lesson 2 sequence</h2><table><thead><tr><th>Stage</th><th>Time</th><th>Focus</th></tr></thead><tbody><tr><td>Vocabulary presentation</td><td>0–12 min</td><td>All ten words in order; one example and chunk per word</td></tr><tr><td>Personal associations and use</td><td>12–16 min</td><td>Two memory links and one sentence</td></tr><tr><td>Quick recall</td><td>16–20 min</td><td>Four prompts; a short transition to bartering</td></tr><tr><td>Barter preparation</td><td>20–25 min</td><td>Cards, a model exchange and the rules</td></tr><tr><td>Trading round</td><td>25–31 min</td><td>Six minutes of negotiation</td></tr><tr><td>Reflection</td><td>31–38 min</td><td>Successful and failed trades; why money helps</td></tr><tr><td>Exit check</td><td>38–40 min</td><td>Two short sentences</td></tr></tbody></table><p><b>Key distinctions:</b> barter uses no money; swap is an exchange; negotiate is the discussion before agreement; a deal is the agreement; a transaction is the exchange. The illustrated banknotes are teaching images, not a guide to authentic banknote details.</p><p><b>Cards:</b> shuffle 12 pairs: 1–2, 3–4, 5–6, 7–8, 9–10, 11–12, 13–14, 15–16, 17–18, 19–20, 21–22, 23–24. Three pairs have a conflict: 7–8 (empty power bank), 15–16 (wrong magazine language), 23–24 (missing puzzle pieces). Ss can refuse. For smaller classes, use complete pairs; for an odd class size, two Ss share a role.</p><p><b>Pacing:</b> cover all ten words but use personal associations for only two. The extra toolkits and later vocabulary are for another lesson or independent study.</p><a class="btn primary" href="resources/Unit_2_Lesson_2_Vocabulary_and_Bartering.docx" download>Download full T/Ss lesson plan</a></div></section>
+<footer><span id="save-status" role="status">Notes save in this browser. Keep a screenshot or download a copy; clearing browser data removes them.</span><div class="actions"><button id="save-bottom" class="btn">Save my notes</button><button id="reset" class="btn">Clear my notes</button></div></footer>
+</div><div id="toast" role="status" hidden></div>
+<script>
+'use strict';
+const vocabData={"moneyTrade":[{"word":"barter","definition":"To exchange goods or services without using money.","imageUrl":"https://cdn.prod.website-files.com/6580bf6203485cf15c72a4f1/658f6f9f60c313eea30c9517_62ce166c87251635d37b9371_621f0dbcbed9c1457dd4ebd5_1280-186187368-barter.jpeg","pos":"verb and noun","example":"I can barter my notebook for your headphones.","chunks":["barter goods","barter for something","a barter system"],"patterns":["barter A for B","barter with someone"],"family":"barter (verb / noun) · bartering (noun / -ing form)","mistake":"A barter exchange uses no money. Both people need to want what the other offers.","scene":"Two people exchange a notebook and headphones without money."},{"word":"bill","definition":"In American English, a piece of paper money; a banknote.","imageUrl":"https://www.alliantcreditunion.org/images/uploads/images/Dollar-Bill-Dimensions.jpg","pos":"countable noun","example":"The consumer pays with a twenty-dollar bill.","chunks":["a ten-dollar bill","a twenty-dollar bill","pay with a bill"],"patterns":["pay with a bill","a bill worth ten dollars"],"family":"bill (noun) · bills (plural)","mistake":"Bill can also mean a statement of money you must pay, as in an electricity bill. Here it means paper money.","scene":"A hand holds a piece of green paper money."},{"word":"checkout counter","definition":"The place in a shop where you pay for the things you buy.","imageUrl":"https://www.shelvingdepot.com/wp-content/uploads/2018/08/Gondola-Checkout-Counter.jpg","pos":"countable noun phrase","example":"We take our goods to the checkout counter and pay.","chunks":["at the checkout counter","go to the checkout counter","wait at the checkout"],"patterns":["pay at the checkout counter","take goods to the checkout counter"],"family":"check out (verb) · checkout (noun) · counter (noun)","mistake":"The checkout counter is the place where you pay; the cashier is the person who takes your payment.","scene":"A cashier serves a customer at a supermarket payment counter."},{"word":"consumer","definition":"A person who buys or uses goods or services.","imageUrl":"https://www.salesforce.com/blog/wp-content/uploads/sites/2/2022/12/GettyImages-1452145403.jpg?w=750","pos":"countable noun","example":"Consumers compare prices before they buy a new phone.","chunks":["consumer needs","consumer choice","protect consumers"],"patterns":["consumers of a product","sell goods to consumers"],"family":"consume (verb) · consumer (noun) · consumption (noun)","mistake":"A consumer is a person. Goods are the things that the person buys or uses.","scene":"A person chooses a reusable bottle from a shop display."},{"word":"currency","definition":"The money used in a particular country or area.","imageUrl":"https://i.ytimg.com/vi/GjvLkkA3wgw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAUKo31Nr0YmTfYxATc4K0vKN1_3A","pos":"countable and uncountable noun","example":"The Turkish lira is the currency used in Türkiye.","chunks":["local currency","foreign currency","exchange currency"],"patterns":["pay in the local currency","exchange one currency for another"],"family":"currency (singular) · currencies (plural)","mistake":"Currency is the money system, such as the lira or euro. A bill is one piece of paper money.","scene":"Paper banknotes and coins from different countries."},{"word":"deal","definition":"An agreement between people; also a good price or offer.","imageUrl":"https://cdn.corporatefinanceinstitute.com/assets/business-deal.jpeg","pos":"countable noun","example":"We make a deal: I give you my notebook and you give me your pen.","chunks":["make a deal","a fair deal","get a good deal"],"patterns":["make a deal with someone","a deal on a product"],"family":"deal (noun / verb) · dealer (noun)","mistake":"Negotiate is what you do to discuss an agreement. The deal is the agreement you reach.","scene":"Two people shake hands after agreeing an exchange."},{"word":"goods","definition":"Things that are made, bought or sold.","imageUrl":"https://cdn1.ieltsonlinetests.com/hu-kCKE--621x414%40LiveMint.jpg","pos":"plural noun","example":"The shop sells everyday goods such as bags and notebooks.","chunks":["sell goods","buy goods","goods and services"],"patterns":["goods for sale","trade goods for other goods"],"family":"goods (plural noun)","mistake":"Use a plural verb: These goods are for sale. Goods are physical items; services are work done for people.","scene":"A shop shelf with bottles, school supplies and backpacks."},{"word":"negotiate","definition":"To discuss something in order to reach an agreement.","imageUrl":"https://www.insidehighered.com/sites/default/files/styles/max_650x650/public/media/GettyImages-1209776844.jpg?itok=P1SWIlM5","pos":"verb","example":"We negotiate a fair deal before we swap our items.","chunks":["negotiate a deal","negotiate a price","negotiate an agreement"],"patterns":["negotiate with someone","negotiate over the price"],"family":"negotiate (verb) · negotiation (noun) · negotiator (noun)","mistake":"You may negotiate without reaching a deal. Discussion does not always end in agreement.","scene":"Two people discuss a possible exchange across a table."},{"word":"swap","definition":"To exchange one thing for another.","imageUrl":"https://bymmb.com/wp-content/uploads/2014/03/swap-nedir.jpg","pos":"verb and countable noun","example":"Would you like to swap your pen for my notebook?","chunks":["swap items","swap places","a fair swap"],"patterns":["swap A for B","swap something with someone"],"family":"swap (verb / noun) · swapped · swapping","mistake":"Use for between the two items: swap my book for your magazine. A swap can be a barter exchange when no money is used.","scene":"Two hands exchange a book and a magazine."},{"word":"transaction","definition":"An exchange of money, goods or services, especially in business.","imageUrl":"https://www.tgccpa.com/wp-content/uploads/2019/02/AdobeStock_115802339_r-min.jpg","pos":"countable noun","example":"Both people agree, and the transaction is complete.","chunks":["complete a transaction","a cash transaction","an online transaction"],"patterns":["a transaction between two people","pay for a transaction"],"family":"transact (formal verb) · transaction (noun)","mistake":"The deal is the agreement. The transaction is the exchange. A barter exchange can also be a transaction.","scene":"A customer taps a card on a payment terminal."}],"compoundAdjectives":[{"word":"hard-to-resist","definition":"very tempting or difficult to say no to","imageUrl":"https://scontent.fsaw3-1.fna.fbcdn.net/v/t39.30808-6/474223303_3864214073826748_3580515620733815347_n.jpg?stp=dst-jpg_s640x640_tt6&_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_ohc=yMx0wsKmlbcQ7kNvwG6RHE_&_nc_oc=AdkMQ37HfDz4IuweQrfud3Nx0UpWj9v8nE3mIzPyr9GN3FLDvlyzZ4JXusdhsYNOG8E&_nc_zt=23&_nc_ht=scontent.fsaw3-1.fna&_nc_gid=-Wzx7Qmhh-6S-IFfpdomNw&oh=00_AfXJr2CoXyebivNPfg6zolj9i4XYQlStn5dhPnsQX_wuXA&oe=689917CF","pos":"adjective phrase","example":"A useful notebook at half price is a hard-to-resist offer.","chunks":["a hard-to-resist offer","a hard-to-resist deal"],"patterns":["an offer that is hard to resist"],"family":"resist (verb) · irresistible (adjective)","mistake":"Use hyphens before a noun: a hard-to-resist offer. After is, say hard to resist."},{"word":"high-tech","definition":"using very modern technology","imageUrl":"https://www.ict.eu/sites/corporate/files/images/Header-expertise-High-Tech-1920x867.jpg","pos":"adjective","example":"The shop uses high-tech payment systems.","chunks":["high-tech equipment","a high-tech device"],"patterns":["a high-tech solution to a problem"],"family":"technology (noun) · technological (adjective)","mistake":"High-tech describes advanced technology, not simply something expensive."},{"word":"must-have","definition":"something very popular you feel you need","imageUrl":"https://theholdernessfamily.com/wp-content/uploads/2022/06/summer-must-haves.png","pos":"adjective and noun","example":"For many students, a reusable bottle is a must-have item.","chunks":["a must-have item","a must-have product"],"patterns":["a must-have for someone"],"family":"must-have (noun / adjective)","mistake":"A must-have is something people feel they should own; it is not always a real need."},{"word":"overnight","definition":"happening very suddenly or quickly","imageUrl":"https://quotefancy.com/media/wallpaper/1600x900/1980186-Paula-Deen-Quote-Change-doesn-t-happen-overnight-It-starts-with.jpg","pos":"adjective and adverb","example":"The small business did not become successful overnight.","chunks":["overnight success","change overnight"],"patterns":["become successful overnight"],"family":"overnight (adjective / adverb)","mistake":"Overnight can mean during the night or very suddenly. It does not always describe a literal night."},{"word":"sky-high","definition":"extremely high (usually for prices)","imageUrl":"https://i.redd.it/usaj20xfmotc1.png","pos":"adjective","example":"The sky-high prices made consumers choose cheaper goods.","chunks":["sky-high prices","sky-high costs"],"patterns":["prices are sky-high"],"family":"high (adjective) · highly (adverb)","mistake":"Sky-high means extremely high. It often describes prices and costs."},{"word":"worldwide","definition":"happening all over the world","imageUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTluIRueSUbZKOS9eDqd62yB9SrEjr971jBoA&s","pos":"adjective and adverb","example":"The company sells its products worldwide.","chunks":["worldwide demand","sell worldwide"],"patterns":["be available worldwide"],"family":"world (noun) · worldwide (adjective / adverb)","mistake":"Worldwide means across the world; it is written as one word."}],"worldProblems":[{"word":"benefit","definition":"a helpful or good effect","imageUrl":"https://www.flexjobs.com/employer-blog/wp-content/uploads/2020/01/27163418/benefit-trends.png","pos":"noun and verb","example":"One benefit of bartering is that you do not need cash.","chunks":["a major benefit","benefit from something"],"patterns":["the benefit of doing something"],"family":"benefit (noun / verb) · beneficial (adjective)","mistake":"As a verb, use benefit from: Consumers benefit from lower prices."},{"word":"damage","definition":"harm or injury caused to something","imageUrl":"https://www.firstatlanticfire.com/wp-content/uploads/2021/05/page-header-wind-damage.jpg","pos":"uncountable noun and verb","example":"Heavy rain caused damage to the shop.","chunks":["cause damage","serious damage"],"patterns":["damage to something"],"family":"damage (noun / verb) · damaged (adjective)","mistake":"For physical harm, say damage, not a damage. The plural damages has a different legal meaning."},{"word":"deserve","definition":"to have earned something","imageUrl":"https://cdn.langeek.co/photo/43494/original/?type=jpeg","pos":"verb","example":"People who work hard deserve fair pay.","chunks":["deserve respect","deserve a chance"],"patterns":["deserve to do something"],"family":"deserve (verb) · deserving (adjective)","mistake":"Use deserve to do, not deserve doing, when describing what a person should be able to do."},{"word":"potential","definition":"the possibility of future development","imageUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfHkJ8Q-7UIi9d_Y5TOmZSqT1axreRVAbiPg&s","pos":"noun and adjective","example":"The idea has the potential to help many families.","chunks":["have potential","a potential problem"],"patterns":["the potential to do something"],"family":"potential (noun / adjective) · potentially (adverb)","mistake":"Potential describes a possibility; it is not a guarantee that something will happen."},{"word":"poverty","definition":"the state of being extremely poor","imageUrl":"https://images.eu.ctfassets.net/8n7i7n887l2e/6SL0DdTBt5Uw99SOMdLPus/72cd186b0373699427d3f85e1fcfcc14/Poverty-what-is-poverty-1.jpg","pos":"uncountable noun","example":"The project helps families living in poverty.","chunks":["reduce poverty","live in poverty"],"patterns":["lift people out of poverty"],"family":"poor (adjective) · poverty (noun)","mistake":"Poverty is usually uncountable: poverty, not a poverty."},{"word":"priority","definition":"the thing that is most important","imageUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlQLPCb4m7lgFMceKoI7QfFsjjA0ZflsD8Uw&s","pos":"countable noun","example":"For this social enterprise, helping local people is the top priority.","chunks":["top priority","make something a priority"],"patterns":["give priority to something"],"family":"priority (noun) · prioritise (verb)","mistake":"A priority is something you put first; it is not simply something you like."},{"word":"social enterprise","definition":"a business created to solve social problems","imageUrl":"https://www.bigissue.com/wp-content/uploads/2017/09/Social_Enterprise.jpg","pos":"countable noun phrase","example":"The social enterprise sells bags and uses its profits to support local families.","chunks":["run a social enterprise","set up a social enterprise"],"patterns":["a social enterprise that supports people"],"family":"social (adjective) · enterprise (noun)","mistake":"A social enterprise trades goods or services to achieve a social purpose. It can earn money."},{"word":"transform","definition":"to change something completely","imageUrl":"https://media.istockphoto.com/id/1417761158/tr/foto%C4%9Fraf/success-transformation.jpg?s=612x612&w=0&k=20&c=QG4T3uFIejrGIPExbcDaPdFcyJbd81EYDOxZEcFpjS8=","pos":"verb","example":"The project transformed an empty building into a busy community shop.","chunks":["transform lives","transform a place"],"patterns":["transform A into B"],"family":"transform (verb) · transformation (noun)","mistake":"Use into to show the result: transform an old shop into a café."},{"word":"vaccination","definition":"a shot to protect against a disease","imageUrl":"https://www.phc.ox.ac.uk/images/blog/covid-vaccines-in-children/responsive_image?ratio=r16x9&scale=w760","pos":"countable and uncountable noun","example":"The clinic provides vaccinations to protect people from disease.","chunks":["a vaccination programme","receive a vaccination"],"patterns":["vaccination against a disease"],"family":"vaccinate (verb) · vaccination (noun) · vaccine (noun)","mistake":"A vaccine is the substance; vaccination is the act of giving it."}]};
+const KEY='unit2-vocabulary-studio-v1';
+const all=Object.entries(vocabData).flatMap(([category,items])=>items.map((item,i)=>({...item,category,id:category+'-'+i,tile:category==='moneyTrade'?i:null})));
+const byId=new Map(all.map(item=>[item.id,item]));
+const $=id=>document.getElementById(id);
+const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let state={associations:{},sentences:{},confident:{}};
+try{const saved=JSON.parse(localStorage.getItem(KEY)||'null');if(saved&&typeof saved==='object'){for(const k of Object.keys(state)){if(saved[k]&&typeof saved[k]==='object'&&!Array.isArray(saved[k]))state[k]=saved[k];}}}catch(error){/* Work remains available when browser storage is disabled. */}
+let index=0,associationIndex=0,recallIndex=0,galleryMode=false,currentView='learn',toastHandle;
+function notify(message){$('toast').textContent=message;$('toast').hidden=false;clearTimeout(toastHandle);toastHandle=setTimeout(()=>$('toast').hidden=true,3500);}
+function save(explicit=false){try{localStorage.setItem(KEY,JSON.stringify(state));$('save-status').textContent='Saved in this browser. Download a copy or take a screenshot; clearing browser data removes your notes.';if(explicit)notify('Your notes are saved in this browser.');return true;}catch(error){$('save-status').textContent='This browser cannot save notes. Download a copy before leaving.';if(explicit)notify('Saving is unavailable. Please download your notes.');return false;}}
+function deck(){const category=$('category').value;return all.filter(item=>category==='all'||item.category===category);}
+function wrap(n,len){return((n%len)+len)%len;}
+function photo(item){if(item.tile!==null){const col=item.tile%5,row=Math.floor(item.tile/5),bounds=[0,400,798,1192,1584,1983],side=382,sx=(bounds[col]+bounds[col+1]-side)/2,sy=row===0?(397-side)/2:397+(396-side)/2;return `<div class="scene" role="img" aria-label="${esc(item.scene)}" style="background-size:${1983/side*100}% ${793/side*100}%;background-position:${sx/(1983-side)*100}% ${sy/(793-side)*100}%"></div>`;}return `<div class="scene" style="background-image:none"><img loading="lazy" src="${esc(item.imageUrl)}" alt="${esc(item.word)}" onerror="this.onerror=null;this.hidden=true;this.parentElement.style.backgroundColor='#dcece4';"></div>`;}
+function linksFor(id){return Array.isArray(state.associations[id])?state.associations[id].filter(v=>typeof v==='string'):[];}
+function tokens(values){return values.map(v=>`<span class="chunk">${esc(v)}</span>`).join('');}
+function memory(item){return `<p class="prompt memory-prompt">What does this word make you think of?</p><div class="inputrow"><input data-memory-input maxlength="80" aria-label="Personal association for ${esc(item.word)}" placeholder="An item, person, shop or experience…"><button class="btn gold" data-action="add">Add</button></div><div class="chips">${linksFor(item.id).map((v,i)=>`<span class="memory">${esc(v)}<button data-action="remove" data-memory-index="${i}" aria-label="Remove memory link">×</button></span>`).join('')}</div>`;}
+function card(item,n,len,association=false){return `<article class="deck" data-word-id="${esc(item.id)}"><div class="visual">${photo(item)}<span class="photo-count">${n+1} / ${len} · ${item.category==='moneyTrade'?'Today\'s set':'Later vocabulary'}</span>${item.tile!==null?'<span class="photo-credit">Illustrative photo</span>':''}</div><div class="cardbody"><span class="pos">${esc(item.pos)}</span><div class="wordrow"><h3>${esc(item.word)}</h3><button class="btn speak" data-action="speak" aria-label="Hear ${esc(item.word)}">🔊</button></div><p class="definition">${esc(item.definition)}</p><p class="prompt">One useful chunk</p>${tokens(item.chunks.slice(0,2))}<div class="example"><b>In context:</b> ${esc(item.example)}</div>${memory(item)}${association?`<p class="small"><b>Say:</b> “${esc(item.word)} makes me think of ___ because ___.”</p>`:''}<details class="toolkit"><summary>More chunks, patterns and common mistakes</summary><div class="tools"><div><h4>Common partners</h4>${tokens(item.chunks)}</div><div><h4>Useful patterns</h4>${tokens(item.patterns)}</div><div><h4>Word family</h4><p>${esc(item.family)}</p></div><div><h4>Notice</h4><p>${esc(item.mistake)}</p></div></div></details><div class="write"><label class="prompt" for="sentence-${association?'associate':'learn'}-${esc(item.id)}">My sentence</label><textarea id="sentence-${association?'associate':'learn'}-${esc(item.id)}" data-sentence placeholder="Use one useful chunk in your own sentence…">${esc(state.sentences[item.id]||'')}</textarea><div class="actions"><button class="btn soft" data-action="check">Sentence self-check</button><button class="btn ${state.confident[item.id]?'primary':''}" data-action="confidence" aria-pressed="${Boolean(state.confident[item.id])}">${state.confident[item.id]?'✓ I can use this':'I can use this'}</button></div><p class="small" data-feedback hidden>Check with your partner: does the meaning fit? Is the word partner correct? Does the sentence explain your idea?</p></div></div></article>`;}
+function renderLearn(){const items=deck();index=wrap(index,items.length);$('set-title').textContent=$('category').selectedOptions[0].textContent;$('learn-card').hidden=galleryMode;$('learn-controls').hidden=galleryMode;$('gallery').hidden=!galleryMode;if(galleryMode){$('gallery').innerHTML=items.map((item,i)=>card(item,i,items.length)).join('');$('learn-card').innerHTML='';}else{$('gallery').innerHTML='';$('learn-card').innerHTML=card(items[index],index,items.length);$('dots').innerHTML=items.map((item,i)=>`<button data-word-index="${i}" aria-label="Show ${esc(item.word)}" aria-current="${i===index}">${i+1}</button>`).join('');}}
+function renderAssociate(){const items=vocabData.moneyTrade.map((_,i)=>byId.get('moneyTrade-'+i));associationIndex=wrap(associationIndex,items.length);$('associate-card').innerHTML=card(items[associationIndex],associationIndex,items.length,true);$('associate-count').textContent=(associationIndex+1)+' / '+items.length;}
+const recall=[{prompt:'You exchange your notebook for headphones. No money is used. What is this called?',answer:'barter / bartering',reason:'Bartering means trading goods or services without money.'},{prompt:'What do we call a person who buys or uses goods and services?',answer:'consumer',reason:'The person is the consumer; the products are the goods.'},{prompt:'Which word means the type of money a country uses? Give one example.',answer:'currency',reason:'For example, the Turkish lira is a currency.'},{prompt:'You discuss an exchange, reach an agreement and complete it. Which words name the discussion, the agreement and the exchange?',answer:'negotiate → deal → transaction',reason:'You negotiate, make a deal and complete a transaction. A swap exchanges one thing for another.'}];
+function renderRecall(){recallIndex=wrap(recallIndex,recall.length);const r=recall[recallIndex];$('recall-card').innerHTML=`<span class="pos">Prompt ${recallIndex+1} of ${recall.length}</span><p class="recall-prompt">${esc(r.prompt)}</p><button class="btn primary" id="reveal-recall">Reveal and check</button><div class="recall-answer" id="recall-answer" hidden><h2>${esc(r.answer)}</h2><p>${esc(r.reason)}</p></div>`;$('reveal-recall').onclick=()=>{$('recall-answer').hidden=false;$('reveal-recall').hidden=true;};$('recall-count').textContent=(recallIndex+1)+' / '+recall.length;}
+function showView(view){currentView=view;['learn','associate','recall','barter'].forEach(v=>$('view-'+v).hidden=v!==view);document.querySelectorAll('[data-view]').forEach(button=>{const active=button.dataset.view===view;button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active));});if(view==='learn')renderLearn();if(view==='associate')renderAssociate();if(view==='recall')renderRecall();}
+function speak(word){if(!('speechSynthesis'in window)){notify('Pronunciation audio is unavailable in this browser.');return;}speechSynthesis.cancel();const utterance=new SpeechSynthesisUtterance(word);utterance.lang='en-GB';utterance.rate=.85;speechSynthesis.speak(utterance);}
+document.addEventListener('click',event=>{const nav=event.target.closest('[data-view]');if(nav){showView(nav.dataset.view);return;}const dot=event.target.closest('[data-word-index]');if(dot){index=Number(dot.dataset.wordIndex);renderLearn();return;}const button=event.target.closest('[data-action]'),container=button?.closest('[data-word-id]');if(!container)return;const item=byId.get(container.dataset.wordId);if(!item)return;const action=button.dataset.action;if(action==='speak')speak(item.word);if(action==='add'){const input=container.querySelector('[data-memory-input]'),value=input.value.trim();if(!value){notify('Add one personal memory link first.');return;}const links=linksFor(item.id);if(!links.some(v=>v.toLowerCase()===value.toLowerCase()))links.push(value);state.associations[item.id]=links;save();currentView==='associate'?renderAssociate():renderLearn();}if(action==='remove'){state.associations[item.id]=linksFor(item.id).filter((_,i)=>i!==Number(button.dataset.memoryIndex));save();currentView==='associate'?renderAssociate():renderLearn();}if(action==='confidence'){state.confident[item.id]=!state.confident[item.id];save();currentView==='associate'?renderAssociate():renderLearn();}if(action==='check')container.querySelector('[data-feedback]').hidden=false;});
+document.addEventListener('input',event=>{if(event.target.matches('[data-sentence]')){const id=event.target.closest('[data-word-id]').dataset.wordId;state.sentences[id]=event.target.value;save();}});
+document.addEventListener('keydown',event=>{if(event.key==='Enter'&&event.target.matches('[data-memory-input]')){event.preventDefault();event.target.closest('[data-word-id]').querySelector('[data-action="add"]').click();}});
+$('prev').onclick=()=>{index--;renderLearn();};$('next').onclick=()=>{index++;renderLearn();};$('category').onchange=()=>{index=0;renderLearn();};$('layout').onclick=()=>{galleryMode=!galleryMode;$('layout').textContent=galleryMode?'Show presentation cards':'Show card gallery';renderLearn();};$('associate-prev').onclick=()=>{associationIndex--;renderAssociate();};$('associate-next').onclick=()=>{associationIndex++;renderAssociate();};$('recall-prev').onclick=()=>{recallIndex--;renderRecall();};$('recall-next').onclick=()=>{recallIndex++;renderRecall();};$('projector').onclick=()=>{const on=document.body.classList.toggle('projector');$('projector').setAttribute('aria-pressed',String(on));$('projector').textContent=on?'Exit projector mode':'Projector mode';};$('save-top').onclick=$('save-bottom').onclick=()=>save(true);
+$('export').onclick=()=>{const text=all.filter(item=>linksFor(item.id).length||state.sentences[item.id]).map(item=>item.word.toUpperCase()+'\nMeaning: '+item.definition+'\nMemory links: '+linksFor(item.id).join('; ')+'\nMy sentence: '+(state.sentences[item.id]||'')).join('\n\n');if(!text){notify('Add a memory link or sentence first.');return;}const url=URL.createObjectURL(new Blob(['UNIT 2 VOCABULARY NOTES\n\n'+text],{type:'text/plain;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='Unit_2_My_Vocabulary_Notes.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+$('reset').onclick=()=>{if(!confirm('Clear your saved memory links, sentences and confidence marks in this browser?'))return;state={associations:{},sentences:{},confident:{}};save();renderLearn();if(currentView==='associate')renderAssociate();notify('Your notes have been cleared.');};$('teacher-toggle').onclick=()=>{const guide=$('teacher-guide');guide.hidden=!guide.hidden;$('teacher-toggle').setAttribute('aria-expanded',String(!guide.hidden));};
+const total=360;let remaining=total,deadline=0,timerHandle=null;
+function updateTimer(){const mins=Math.floor(remaining/60),seconds=remaining%60;$('timer-display').textContent=mins+':'+String(seconds).padStart(2,'0');$('timer-progress').value=remaining;}
+function stopTimer(){clearInterval(timerHandle);timerHandle=null;}
+function tickTimer(){remaining=Math.max(0,Math.ceil((deadline-Date.now())/1000));updateTimer();if(remaining===0){stopTimer();$('timer-start').disabled=true;$('timer-start').textContent='Market closed';$('market-status').textContent='Market closed. Sit down, record your result and discuss your trades.';}}
+$('timer-start').onclick=()=>{if(timerHandle){remaining=Math.max(0,Math.ceil((deadline-Date.now())/1000));stopTimer();updateTimer();$('timer-start').textContent='Resume market';$('market-status').textContent='Market paused.';}else if(remaining>0){deadline=Date.now()+remaining*1000;timerHandle=setInterval(tickTimer,200);$('timer-start').textContent='Pause market';$('market-status').textContent='Market open. Find a fair swap.';}};
+$('timer-reset').onclick=()=>{stopTimer();remaining=total;updateTimer();$('timer-start').disabled=false;$('timer-start').textContent='Start market';$('market-status').textContent='Ready for a six-minute trading round.';};
+renderLearn();
+</script></body></html>
